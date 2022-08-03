@@ -6,8 +6,6 @@ set premake_executable=%premake_directory%\premake5.exe
 
 IF NOT EXIST _premake\premake5.exe (
 	echo Premake is not present. Downloading...
-	
-	set premake_link=https://github.com/premake/premake-core/releases/download/v5.0.0-beta1/premake-5.0.0-beta1-windows.zip
 
 	if NOT EXIST %premake_directory% (
 		mkdir %premake_directory%
@@ -15,7 +13,7 @@ IF NOT EXIST _premake\premake5.exe (
 
 	if NOT EXIST %premake_executable% (
 		if NOT EXIST %premake_archive% (
-			powershell -Command "Invoke-WebRequest %premake_link% -OutFile %premake_archive%"
+			powershell -Command "Invoke-WebRequest https://github.com/premake/premake-core/releases/download/v5.0.0-beta1/premake-5.0.0-beta1-windows.zip -OutFile %premake_archive%"
 		)
 		powershell -Command "Expand-Archive %premake_archive% -DestinationPath %premake_directory%/"
 	)
